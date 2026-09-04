@@ -20,6 +20,6 @@ format:
       - brand
     css: styles.css
     toc: true
-
-
-
+    page-layout: custom
+    
+server: shiny

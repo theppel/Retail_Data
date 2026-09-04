@@ -1,5 +1,5 @@
 ---
-title: "Retail_Data"
+title: "Retail Data"
 ---
 
 This is a Quarto website.
