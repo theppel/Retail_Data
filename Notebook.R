@@ -7,6 +7,7 @@ library(ggplot2)
 library(RSQLite)
 library(shiny)
 library(RColorBrewer)
+library(bslib)
 
 # set file name where .db file is
 filename <- "retail_store.db"
@@ -168,5 +169,107 @@ ords |>
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(x = "Time", y = "Orders", title = "Orders Time Series") +
   geom_vline(xintercept = dmy(paste0("1-1-", as.character(c(year(min(ords$OrderDatetime)):year(max(ords$OrderDatetime)))))),
-             linetype = "dashed")
+             linetype = "dashed") +
+  ylim(0, max(ords |>
+                mutate(
+                  OrderDatetime = as_date(floor_date(OrderDatetime, "month"))
+                ) |>
+                count(OrderDatetime) |> summarise(x = max(n))) + 100)
+
+ords |>
+  mutate(
+    OrderDatetime = as_date(floor_date(OrderDatetime, "month"))
+  ) |>
+  count(OrderDatetime) |>
+  summarise(x = max(n))
+
+ui <- fluidPage(
+  plotOutput("plot", click = "plot_click"),
+  textOutput("info")
+)
+
+server <- function(input, output){
+  clicked_point <- reactiveVal(NULL)
+  
+  observeEvent(input$plot_click, {
+    np <- nearPoints(ords |>
+                       mutate(
+                         OrderDatetime = as_date(floor_date(OrderDatetime, "month"))
+                       ) |>
+                       count(OrderDatetime), input$plot_click, xvar = "OrderDatetime", yvar = "n", threshold = 10, maxpoints = 1)
+    if (nrow(np) > 0) {
+      clicked_point(np)
+    } else {
+      clicked_point(NULL)
+    }
+  })
+  
+  output$plot <- renderPlot({
+    p <- ords |>
+      mutate(
+        OrderDatetime = as_date(floor_date(OrderDatetime, "month"))
+      ) |>
+      count(OrderDatetime) |>
+      ggplot(aes(x = OrderDatetime, y = n)) +
+      geom_line(linewidth = 0.75) +
+      geom_point() +
+      scale_x_date(date_labels = "%Y-%b", date_breaks = "3 months") +
+      theme_minimal() +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+      labs(x = "Time", y = "Orders", title = "Orders Time Series") +
+      geom_vline(xintercept = dmy(paste0("1-1-", as.character(c(year(min(ords$OrderDatetime)):year(max(ords$OrderDatetime)))))),
+                 linetype = "dashed") +
+      ylim(0, max(ords |>
+                    mutate(
+                      OrderDatetime = as_date(floor_date(OrderDatetime, "month"))
+                    ) |>
+                    count(OrderDatetime) |> summarise(x = max(n))) + 100)
+    
+    if(!is.null(clicked_point())) {
+      cp <- clicked_point()
+      p <- p + geom_label(
+        data = cp,
+        aes(x = OrderDatetime, y = n,
+            label = paste0("Month: ", format(OrderDatetime, "%b %Y"), "\nOrders: ", n)),
+        nudge_y = 50,
+        fill = "white", color = "black", label.size = 0.4
+      )
+    }
+    p
+  })
+  
+  output$info <- renderText({
+    "Click on a point to see orders"
+  })
+}
+
+shinyApp(ui, server)
+
+df <- data.frame(x = 1:20, y = cumsum(rnorm(20)))
+
+ui_test <- fluidPage(
+  plotOutput("plot", click = "plot_click"),
+  verbatimTextOutput("info")
+)
+
+server_test <- function(input, output) {
+  output$plot <- renderPlot({
+    ggplot(df, aes(x, y)) +
+      geom_line() +
+      geom_point()  # nearPoints() works best with actual point geoms
+  })
+  
+  output$info <- renderPrint({
+    np <- nearPoints(df, input$plot_click, xvar = "x", yvar = "y", threshold = 10, maxpoints = 1)
+    if (nrow(np) == 0) {
+      "Click on a point on the line to see coordinates"
+    } else {
+      np
+    }
+  })
+}
+
+shinyApp(ui_test, server_test)
+
+year(as.POSIXct(ords$OrderDatetime, origin = "1970-01-01", tz = "UTC"))
 
