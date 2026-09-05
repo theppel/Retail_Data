@@ -245,31 +245,44 @@ server <- function(input, output){
 
 shinyApp(ui, server)
 
-df <- data.frame(x = 1:20, y = cumsum(rnorm(20)))
-
-ui_test <- fluidPage(
-  plotOutput("plot", click = "plot_click"),
-  verbatimTextOutput("info")
-)
-
-server_test <- function(input, output) {
-  output$plot <- renderPlot({
-    ggplot(df, aes(x, y)) +
-      geom_line() +
-      geom_point()  # nearPoints() works best with actual point geoms
-  })
-  
-  output$info <- renderPrint({
-    np <- nearPoints(df, input$plot_click, xvar = "x", yvar = "y", threshold = 10, maxpoints = 1)
-    if (nrow(np) == 0) {
-      "Click on a point on the line to see coordinates"
-    } else {
-      np
-    }
-  })
-}
-
-shinyApp(ui_test, server_test)
-
 year(as.POSIXct(ords$OrderDatetime, origin = "1970-01-01", tz = "UTC"))
 
+ui_in <- page_fixed(
+  dateRangeInput(
+    inputId = "daterange",
+    label = "Select Date Range",
+    start = as_date(floor_date(min(ords$OrderDatetime))),
+    end = as_date(floor_date(max(ords$OrderDatetime)))
+  ),
+  plotOutput("plot"),
+  verbatimTextOutput("datetype")
+)
+
+server_in <- function(input, output){
+  output$plot <- renderPlot({
+    ords |>
+      mutate(
+        OrderDatetime = as_date(floor_date(OrderDatetime, "month"))
+      ) |>
+      count(OrderDatetime) |>
+      ggplot(aes(x = OrderDatetime, y = n)) +
+      geom_line(linewidth = 0.75) +
+      geom_point() +
+      xlim(input$daterange[[1]], input$daterange[[2]]) +
+      scale_x_date(date_labels = "%Y-%b", date_breaks = "3 months") +
+      theme_minimal() +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+      labs(x = "Time", y = "Orders", title = "Orders Time Series") +
+      geom_vline(xintercept = dmy(paste0("1-1-", as.character(c(year(min(ords$OrderDatetime)):year(max(ords$OrderDatetime)))))),
+                 linetype = "dashed") +
+      ylim(0, max(ords |>
+                    mutate(
+                      OrderDatetime = as_date(floor_date(OrderDatetime, "month"))
+                    ) |>
+                    count(OrderDatetime) |> summarise(x = max(n))) + 100)
+    })
+  
+  output$datetype <- renderPrint({typeof(input$daterange[[1]])})
+}
+
+shinyApp(ui_in, server_in)
