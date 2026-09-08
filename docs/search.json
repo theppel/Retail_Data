@@ -7,7 +7,7 @@
     "text": "Products go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(Not_icons/products.svg)'></span>Products"
+      "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/products.svg)'></span>Products"
     ]
   },
   {
@@ -25,7 +25,7 @@
     "text": "Customers go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(Not_icons/customers.svg)'></span>Customers"
+      "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/customers.svg)'></span>Customers"
     ]
   },
   {
@@ -43,7 +43,7 @@
     "text": "Categories go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(Not_icons/categories.svg)'></span>Categories"
+      "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/categories.svg)'></span>Categories"
     ]
   },
   {
@@ -54,7 +54,7 @@
     "text": "Details go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(Not_icons/order_details.svg)'></span>Order Details"
+      "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/order_details.svg)'></span>Order Details"
     ]
   },
   {
@@ -65,7 +65,7 @@
     "text": "Orders go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(Not_icons/orders.svg)'></span>Orders"
+      "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/orders.svg)'></span>Orders"
     ]
   }
 ]
