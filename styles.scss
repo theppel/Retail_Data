@@ -1,28 +1,30 @@
+/*-- scss:defaults --*/
+
 /* Import Google Fonts */
 @import url(
   "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
 );
 
 /*------------------------------------------------------------------------------ 
-SCSS VARIABLES
+  SCSS VARIABLES
 ------------------------------------------------------------------------------*/
 
 /* FONTS */
 
-$font-head:
+$font-primary:
   "Libre Baskerville",
   "Baskerville",
   "Baskerville Old Face",
   Georgia,
   serif;
   
-$font-body:
+$font-secondary:
   "EB Garamond",
   "Garamond",
   "Times New Roman",
   serif;
   
-$font-minor:
+$font-tertiary:
   "Avenir Next",
   "Avenir UI",
   Helvetica,
@@ -32,34 +34,270 @@ $font-minor:
 /* COLOURS */
 
 /* backgrounds */
-$bg-col: #14161A;
+$bg-back: #14161A;
+$bg-mid: #1A1D22;
+$bg-front: #1D2530;
 
+/* border */
+$border-col: #2A2D33;
 
-/* General */
-p {
-  text-align: justify;
-  color: #9CA0A8;
+/* text */
+$font-col-primary: #EDEDED;
+$font-col-secondary: #9CA0A8;
+$font-col-tertiary: #6A6E76;
+$font-col-accent: #2DD4BF;
+$font-col-subtle: #FBBF24;
+
+/* FONT SIZES */
+$font-xs: 1rem;
+$font-s: 1.2rem;
+$font-m: 1.3rem;
+$font-l: 1.5rem;
+$font-xl: 2rem;
+$font-xxl: 2.2rem;
+
+/*------------------------------------------------------------------------------
+  LOAD AVENIR FONT
+------------------------------------------------------------------------------*/
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("fonts/Avenir_Next_Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("fonts/Avenir_Next_Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("fonts/Avenir_Next_Demi.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*-- scss:rules --*/
+
+/*------------------------------------------------------------------------------
+  CSS
+------------------------------------------------------------------------------*/
+
+/* Global options */
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: $bg-back;
+  color: $font-col-primary;
+  
+  font-family: $font-secondary;
+  font-size: $font-m;
+  font-weight: 400;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  
+  font-family: $font-primary;
+  font-weight: 400;
+  color: $font-col-primary;
+  
+  letter-spacing: -0.02em;
 }
 
 h1 {
-  color: #9CA0A8;
+  font-size: $font-xl;
 }
 
-/* navbar */
+h2 {
+  font-size: 19px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+h4 {
+  font-size: $font-l;
+}
+
+/* Text */
+
+p {
+  font-family: $font-secondary;
+  color: $font-col-secondary;
+  font-weight: 400;
+}
+
+/* Sidebar */
+
+.sidebar-section-items,
+.sidebar-item {
+  margin-bottom: 0 !important;
+}
+
+.sidebar-item-container {
+  padding: 0.75rem 0.75rem;
+  margin-bottom: 0.1rem !important;
+  margin-top: 0rem !important;
+}
+
+.sidebar-item-container:hover {
+  background-color: $bg-mid;
+  border-radius: 0.5rem;
+
+  a {
+    color: $font-col-subtle;
+    font-weight: 500;
+  }
+  
+  .sidebar-icon {
+    background-color: $font-col-subtle;
+    height: 0.95rem;
+    width: 0.95rem;
+  }
+}
+
+.sidebar-item-container .active {
+  color: $font-col-accent !important;
+  font-weight: 600;
+}
+
+.sidebar-item-container:has(.active) {
+  background-color: $bg-front;
+  border-radius: 0.5rem;
+  
+  .sidebar-icon {
+    background-color: $font-col-accent;
+    height: 1rem;
+    width: 1rem;
+  }
+}
+
+.sidebar-item:has(.active):hover {
+  a {
+    font-weight: 600;
+  }
+}
+
+#sidebar-title {
+  color: $font-col-primary;
+  font-size: $font-l;
+}
+
+.sidebar-item:has(#sidebar-title) {
+  margin-bottom: 1rem !important;
+}
+
+.sidebar-item-text {
+  font-size: $font-xs;
+}
+
+.sidebar-icon {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-right: 0.5rem;
+  vertical-align: -2px;
+  background-color: $font-col-secondary;
+  -webkit-mask-image: var(--icon);
+  mask-image: var(--icon);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+
+/* Navbar */
+
+.navbar-brand {
+  font-size: $font-xl;
+  color: $font-col-accent;
+}
+
+.navbar-brand:hover {
+  color: $font-col-subtle;
+}
+
+.nav-link {
+  color: $font-col-secondary;
+}
+
+.nav-item{
+  margin-left: 0.5rem;
+}
+
+.nav-item:hover {
+  background-color: $bg-mid;
+  border-radius: 0.5rem;
+
+  a {
+    color: $font-col-subtle;
+    font-weight: 500;
+  }
+}
+
+.nav-item .active {
+  color: $font-col-accent !important;
+  font-weight: 600;
+}
+
+.nav-item:has(.active) {
+  background-color: $bg-front;
+  border-radius: 0.5rem;
+}
+
+.nav-item:has(.active) {
+  a {
+    font-weight: 600;
+  }
+}
+
+.aa-DetachedSearchButtonIcon,
+.aa-SubmitIcon {
+  color: $font-col-secondary !important;
+}
+
+.aa-DetachedSearchButtonIcon,
+.aa-SubmitIcon:hover {
+  color: $font-col-subtle !important;
+}
+
+/* Divs */
+
 #quarto-header .navbar {
-  background-color: #14161A;
-  border-bottom: 1px solid #2A2D33;
+  background-color: $bg-back;
+  border-bottom: 1px solid $border-col;
 }
 
 .navbar-brand {}
 
-/* Sidebar */
 #quarto-sidebar {
-  background-color: #14161A;
-  border-right: 1px solid #2A2D33 !important;
+  background-color: $bg-back;
+  border-right: 1px solid $border-col !important;
 }
 
-/* Main Content */
-body {
-  background-color: #14161A;
-}
+

@@ -1,13 +1,31 @@
 [
   {
+    "objectID": "products.html",
+    "href": "products.html",
+    "title": "Products",
+    "section": "",
+    "text": "Products go here",
+    "crumbs": [
+      "About",
+      "<span class='sidebar-icon' style='--icon: url(/icons/products.svg)'></span>Products"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Retail Data",
     "section": "",
-    "text": "Need to add links to other pages\nMaybe a message above",
+    "text": "Need to add links to other pages\nMaybe a message above"
+  },
+  {
+    "objectID": "customers.html",
+    "href": "customers.html",
+    "title": "Customers",
+    "section": "",
+    "text": "Customers go here",
     "crumbs": [
       "About",
-      "Home"
+      "<span class='sidebar-icon' style='--icon: url(/icons/customers.svg)'></span>Customers"
     ]
   },
   {
@@ -15,20 +33,39 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "categories.html",
+    "href": "categories.html",
+    "title": "Categories",
+    "section": "",
+    "text": "Categories go here",
     "crumbs": [
-      "Home",
-      "About"
+      "About",
+      "<span class='sidebar-icon' style='--icon: url(/icons/categories.svg)'></span>Categories"
     ]
   },
   {
-    "objectID": "NewPage.html",
-    "href": "NewPage.html",
-    "title": "NewPage",
+    "objectID": "details.html",
+    "href": "details.html",
+    "title": "Details",
     "section": "",
-    "text": "Trying a new page to see what happens",
+    "text": "Details go here",
     "crumbs": [
-      "New Page"
+      "About",
+      "<span class='sidebar-icon' style='--icon: url(/icons/order_details.svg)'></span>Order Details"
+    ]
+  },
+  {
+    "objectID": "orders.html",
+    "href": "orders.html",
+    "title": "Orders",
+    "section": "",
+    "text": "Orders go here",
+    "crumbs": [
+      "About",
+      "<span class='sidebar-icon' style='--icon: url(/icons/orders.svg)'></span>Orders"
     ]
   }
 ]

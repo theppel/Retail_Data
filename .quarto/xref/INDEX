@@ -7,5 +7,20 @@
   },
   "NewPage.qmd": {
     "NewPage.html": "70735339"
+  },
+  "categories.qmd": {
+    "categories.html": "c4f671d8"
+  },
+  "customers.qmd": {
+    "customers.html": "d1659ab0"
+  },
+  "details.qmd": {
+    "details.html": "6afcfd59"
+  },
+  "orders.qmd": {
+    "orders.html": "19eb5742"
+  },
+  "products.qmd": {
+    "products.html": "8b65fa70"
   }
 }
