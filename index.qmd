@@ -2,6 +2,5 @@
 title: "Retail Data"
 ---
 
-Need to add links to other pages
+What type of data do you want to look at?
 
-Maybe a message above
