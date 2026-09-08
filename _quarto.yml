@@ -11,15 +11,15 @@ website:
     contents:
       - text: "<span id='sidebar-title'>Pages</span>"
       - href: categories.qmd
-        text: "<span class='sidebar-icon' style='--icon: url(icons/categories.svg)'></span>Categories"
+        text: "<span class='sidebar-icon' style='--icon: url(/icons/categories.svg)'></span>Categories"
       - href: products.qmd
-        text: "<span class='sidebar-icon' style='--icon: url(icons/products.svg)'></span>Products"
+        text: "<span class='sidebar-icon' style='--icon: url(/icons/products.svg)'></span>Products"
       - href: customers.qmd
-        text: "<span class='sidebar-icon' style='--icon: url(icons/customers.svg)'></span>Customers"
+        text: "<span class='sidebar-icon' style='--icon: url(/icons/customers.svg)'></span>Customers"
       - href: orders.qmd
-        text: "<span class='sidebar-icon' style='--icon: url(icons/orders.svg)'></span>Orders"
+        text: "<span class='sidebar-icon' style='--icon: url(/icons/orders.svg)'></span>Orders"
       - href: details.qmd
-        text: "<span class='sidebar-icon' style='--icon: url(icons/order_details.svg)'></span>Order Details"
+        text: "<span class='sidebar-icon' style='--icon: url(/icons/order_details.svg)'></span>Order Details"
 
   navbar:
     search: true
