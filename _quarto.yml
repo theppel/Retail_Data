@@ -19,7 +19,7 @@ website:
       - href: orders.qmd
         text: "<span class='sidebar-icon' style='--icon: url(icons/orders.svg)'></span>Orders"
       - href: details.qmd
-        text: "<span class='sidebar-icon' style='--icon: url(/icons/order_details.svg)'></span>Order Details"
+        text: "<span class='sidebar-icon' style='--icon: url(icons/order_details.svg)'></span>Order Details"
 
   navbar:
     search: true

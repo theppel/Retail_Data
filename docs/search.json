@@ -54,7 +54,7 @@
     "text": "Details go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(/icons/order_details.svg)'></span>Order Details"
+      "<span class='sidebar-icon' style='--icon: url(icons/order_details.svg)'></span>Order Details"
     ]
   },
   {
