@@ -4,20 +4,31 @@
     "href": "index.html",
     "title": "Retail Data",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Need to add links to other pages\nMaybe a message above",
+    "crumbs": [
+      "About",
+      "Home"
+    ]
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "About this site\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Home",
+      "About"
+    ]
   },
   {
     "objectID": "NewPage.html",
     "href": "NewPage.html",
     "title": "NewPage",
     "section": "",
-    "text": "Trying a new page to see what happens"
+    "text": "Trying a new page to see what happens",
+    "crumbs": [
+      "New Page"
+    ]
   }
 ]

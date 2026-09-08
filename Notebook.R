@@ -286,3 +286,14 @@ server_in <- function(input, output){
 }
 
 shinyApp(ui_in, server_in)
+
+mUd7hwLtdEvLgeh3
+
+write_csv(cats, "categories.csv")
+write_csv(cust, "customers.csv")
+write_csv(dets, "order_details.csv")
+write_csv(ords, "orders.csv")
+write_csv(prod, "products.csv")
+
+read_csv("https://retail-data-api.onrender.com/details")
+
