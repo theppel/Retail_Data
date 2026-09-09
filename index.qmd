@@ -4,3 +4,12 @@ title: "Retail Data"
 
 What type of data do you want to look at?
 
+``` {=html}
+<div class="card-grid">
+  <a class="card-link" href="categories.qmd">Categories</a>
+  <a class="card-link" href="products.qmd">Products</a>
+  <a class="card-link" href="customers.qmd">Customers</a>
+  <a class="card-link" href="orders.qmd">Orders</a>
+  <a class="card-link" href="details.qmd">Details</a>
+</div>
+```
