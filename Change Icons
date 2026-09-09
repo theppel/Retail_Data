@@ -1,0 +1,49 @@
+Index.qmd html - github pages
+
+<div class="card-grid">
+  <a class="card-link" href="categories.qmd"><span class='homepage-icon' style='--icon: url(/Retail_Data/icons/categories.svg)'></span>Categories</a>
+  <a class="card-link" href="products.qmd"><span class='homepage-icon' style='--icon: url(/Retail_Data/icons/products.svg)'></span>Products</a>
+  <a class="card-link" href="customers.qmd"><span class='homepage-icon' style='--icon: url(/Retail_Data/icons/customers.svg)'></span>Customers</a>
+  <a class="card-link" href="orders.qmd"><span class='homepage-icon' style='--icon: url(/Retail_Data/icons/orders.svg)'></span>Orders</a>
+  <a class="card-link" href="details.qmd"><span class='homepage-icon' style='--icon: url(/Retail_Data/icons/order_details.svg)'></span>Details</a>
+</div>
+
+Index.qmd html - local
+
+<div class="card-grid">
+  <a class="card-link" href="categories.qmd"><span class='homepage-icon' style='--icon: url(/icons/categories.svg)'></span>Categories</a>
+  <a class="card-link" href="products.qmd"><span class='homepage-icon' style='--icon: url(/icons/products.svg)'></span>Products</a>
+  <a class="card-link" href="customers.qmd"><span class='homepage-icon' style='--icon: url(/icons/customers.svg)'></span>Customers</a>
+  <a class="card-link" href="orders.qmd"><span class='homepage-icon' style='--icon: url(/icons/orders.svg)'></span>Orders</a>
+  <a class="card-link" href="details.qmd"><span class='homepage-icon' style='--icon: url(/icons/order_details.svg)'></span>Details</a>
+</div>
+
+_quarto.yml - github pages
+
+contents:
+      - text: "<span id='sidebar-title'>Pages</span>"
+      - href: categories.qmd
+        text: "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/categories.svg)'></span>Categories"
+      - href: products.qmd
+        text: "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/products.svg)'></span>Products"
+      - href: customers.qmd
+        text: "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/customers.svg)'></span>Customers"
+      - href: orders.qmd
+        text: "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/orders.svg)'></span>Orders"
+      - href: details.qmd
+        text: "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/order_details.svg)'></span>Order Details"
+
+_quarto.yml - local
+
+contents:
+      - text: "<span id='sidebar-title'>Pages</span>"
+      - href: categories.qmd
+        text: "<span class='sidebar-icon' style='--icon: url(/icons/categories.svg)'></span>Categories"
+      - href: products.qmd
+        text: "<span class='sidebar-icon' style='--icon: url(/icons/products.svg)'></span>Products"
+      - href: customers.qmd
+        text: "<span class='sidebar-icon' style='--icon: url(/icons/customers.svg)'></span>Customers"
+      - href: orders.qmd
+        text: "<span class='sidebar-icon' style='--icon: url(/icons/orders.svg)'></span>Orders"
+      - href: details.qmd
+        text: "<span class='sidebar-icon' style='--icon: url(/icons/order_details.svg)'></span>Order Details"

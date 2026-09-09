@@ -8,10 +8,10 @@ What type of data do you want to look at?
 
 ``` {=html}
 <div class="card-grid">
-  <a class="card-link" href="categories.qmd"><span class='homepage-icon' style='--icon: url(/Retail_Data/icons/categories.svg)'></span>Categories</a>
-  <a class="card-link" href="products.qmd"><span class='homepage-icon' style='--icon: url(/Retail_Data/icons/products.svg)'></span>Products</a>
-  <a class="card-link" href="customers.qmd"><span class='homepage-icon' style='--icon: url(/Retail_Data/icons/customers.svg)'></span>Customers</a>
-  <a class="card-link" href="orders.qmd"><span class='homepage-icon' style='--icon: url(/Retail_Data/icons/orders.svg)'></span>Orders</a>
-  <a class="card-link" href="details.qmd"><span class='homepage-icon' style='--icon: url(/Retail_Data/icons/order_details.svg)'></span>Details</a>
+  <a class="card-link" href="categories.qmd"><span class='homepage-icon' style='--icon: url(/icons/categories.svg)'></span>Categories</a>
+  <a class="card-link" href="products.qmd"><span class='homepage-icon' style='--icon: url(/icons/products.svg)'></span>Products</a>
+  <a class="card-link" href="customers.qmd"><span class='homepage-icon' style='--icon: url(/icons/customers.svg)'></span>Customers</a>
+  <a class="card-link" href="orders.qmd"><span class='homepage-icon' style='--icon: url(/icons/orders.svg)'></span>Orders</a>
+  <a class="card-link" href="details.qmd"><span class='homepage-icon' style='--icon: url(/icons/order_details.svg)'></span>Details</a>
 </div>
 ```
