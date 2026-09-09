@@ -7,7 +7,7 @@
     "text": "Products go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(/Retail_Data//icons/products.svg)'></span>Products"
+      "<span class='sidebar-icon' style='--icon: url(/icons/products.svg)'></span>Products"
     ]
   },
   {
@@ -40,10 +40,10 @@
     "href": "categories.html",
     "title": "Categories",
     "section": "",
-    "text": "Categories go here",
+    "text": "Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use \"none\" instead as\nof ggplot2 3.3.4.",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/categories.svg)'></span>Categories"
+      "<span class='sidebar-icon' style='--icon: url(/icons/categories.svg)'></span>Categories"
     ]
   },
   {

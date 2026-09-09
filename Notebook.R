@@ -8,6 +8,11 @@ library(RSQLite)
 library(shiny)
 library(RColorBrewer)
 library(bslib)
+library(extrafont)
+library(ggchicklet)
+
+font_import()
+loadfonts()
 
 # set file name where .db file is
 filename <- "retail_store.db"
@@ -295,5 +300,58 @@ write_csv(dets, "order_details.csv")
 write_csv(ords, "orders.csv")
 write_csv(prod, "products.csv")
 
-read_csv("https://retail-data-api.onrender.com/details")
+categorical_colours <- c("#2DD4BF", "#FBBF24", "#F0A8C4", "#7FC7F2", "#F4A261", 
+                         "#6C7BC2", "#8FBC94", "#E76F51", "#B79CF0", "#9CA0A8")
 
+cats <- read_csv("https://retail-data-api.onrender.com/details")
+
+cats[c(3, 4, 5, 6, 12, 13, 25)] -> cats
+
+head(cats)
+
+colnames(cats)[c(5:7)] <- c("OrderDate", "OrderTime", "CategoryName")
+
+cats |>
+  mutate(
+    UnitProfit = UnitPrice - UnitCost,
+    TotalPrice = UnitPrice * Quantity,
+    TotalCost = UnitCost * Quantity,
+    TotalProfit = TotalPrice - TotalCost,
+    IsDiscounted = DiscountRate > 0
+  ) -> cats
+
+cats |>
+  group_by(CategoryName) |>
+  summarise(
+    Profit = sum(TotalProfit)
+  ) |>
+  mutate(
+    x_pos = as.numeric(factor(CategoryName))
+  ) |>
+  ggplot(aes(x = CategoryName, y = Profit, fill = CategoryName)) +
+  geom_chicklet(radius = grid::unit(6, "pt"), color = NA) +
+  geom_rect(
+    aes(
+      xmin = x_pos - 0.45, xmax = x_pos + 0.45,
+      ymin = 0, ymax = Profit * 0.5  # covers just the bottom slice of each bar
+    )) +
+  scale_fill_manual(values = categorical_colours) +
+  guides(fill = FALSE) +
+  theme_minimal() +
+  RD_theme_c() +
+  labs(x = NULL, y = "Profit", title = "Profit by Category")
+
+RD_theme_c <- function() {
+  theme(text = element_text(family = "Manrope"),
+        panel.background = element_rect(fill = "#1A1D22", colour = NA),
+        plot.background = element_rect(fill = "#1A1D22", colour = NA),
+        axis.text.x = element_text(angle = -45, color = "#9CA0A8", hjust = 0, margin = margin(t = 0, r = 0, b = 0, l = 0, unit = "pt")),
+        axis.text.y = element_text(color = "#9CA0A8"),
+        axis.title.y = element_text(color = "#9CA0A8", family = "Garamond", size = 16),
+        axis.title.x = element_text(color = "#9CA0A8", family = "Garamond", size = 16),
+        title = element_text(color = "#EDEDED", family = "Baskerville Old Face", size = 20, face = "bold"),
+        panel.grid.major.x = element_line(colour = NA),
+        panel.grid.minor.y = element_line(colour = "#2A2D33", linewidth = 0.5),
+        panel.grid.major.y = element_line(colour = "#2A2D33", linewidth = 0.1)
+  )
+}
