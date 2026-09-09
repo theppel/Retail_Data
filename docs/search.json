@@ -7,7 +7,7 @@
     "text": "Products go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(/icons/products.svg)'></span>Products"
+      "<span class='sidebar-icon' style='--icon: url(/Retail_Data//icons/products.svg)'></span>Products"
     ]
   },
   {
@@ -43,7 +43,7 @@
     "text": "Categories go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(/icons/categories.svg)'></span>Categories"
+      "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/categories.svg)'></span>Categories"
     ]
   },
   {

@@ -162,15 +162,24 @@ p {
   padding: 0.75rem 0.75rem;
   margin-bottom: 0.1rem !important;
   margin-top: 0rem !important;
+  transition: 0.5s;
+  border-radius: 0.5rem;
+  
+  a {
+    transition: 0.5s;
+  }
+  
+  .sidebar-icon {
+    transition: 0.5s;
+  }
 }
 
 .sidebar-item-container:hover {
   background-color: $bg-mid;
-  border-radius: 0.5rem;
 
   a {
     color: $font-col-subtle;
-    font-weight: 500;
+    font-weight: 500;;
   }
   
   .sidebar-icon {
@@ -236,6 +245,7 @@ p {
 .navbar-brand {
   font-size: $font-xl;
   color: $font-col-accent;
+  transition: 0.5s;
 }
 
 .navbar-brand:hover {
@@ -248,15 +258,19 @@ p {
 
 .nav-item{
   margin-left: 0.5rem;
+  border-radius: 0.5rem;
+  
+  a {
+    transition: 0.5s;
+  }
 }
 
 .nav-item:hover {
   background-color: $bg-mid;
-  border-radius: 0.5rem;
 
   a {
     color: $font-col-subtle;
-    font-weight: 500;
+    font-weight: 500;;
   }
 }
 
@@ -279,6 +293,7 @@ p {
 .aa-DetachedSearchButtonIcon,
 .aa-SubmitIcon {
   color: $font-col-secondary !important;
+  transition: 0.5s;
 }
 
 .aa-DetachedSearchButtonIcon,
@@ -307,22 +322,54 @@ p {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
-  margin: 2rem 0;
+  margin: 5% 0;
 }
 
 .card-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 220px;
-  height: 140px;
+  width: 30%;
+  height: 20vh;
   border: 1px solid #ddd;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  color: inherit;
-  background: #f9f9f9;
+  color: $font-col-secondary;
+  background-color: $bg-mid;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
+  font-weight: 700;
+  font-size: $font-xl;
+  transition: 0.75s;
+}
+
+.homepage-icon {
+  display: inline-block;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 0.5rem;
+  background-color: $font-col-secondary;
+  -webkit-mask-image: var(--icon);
+  mask-image: var(--icon);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: 0.75s;
+}
+
+.card-link:hover {
+  font-weight: 700;
+  color: $font-col-accent;
+  background-color: $bg-front;
+  font-size: $font-xxl;
+  
+  .homepage-icon {
+    background-color: $font-col-accent;
+    transition: 0.75s;
+    height: 1.9rem;
+    width: 1.9rem;
+  }
 }
 
 /* Hiding sidebar */
@@ -330,3 +377,4 @@ p {
 #quarto-margin-sidebar {
   display: none !important;
 }
+
