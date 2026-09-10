@@ -357,3 +357,36 @@ RD_theme_c <- function() {
         panel.grid.major.y = element_line(colour = "#2A2D33", linewidth = 0.1)
   )
 }
+
+prod <- read_csv("https://retail-data-api.onrender.com/products")
+
+colnames(prod)[c(5:8)] <- c("OrderDate", "OrderTime", "CategoryName", "ProductName")
+
+prod |>
+  mutate(
+    UnitProfit = UnitPrice - UnitCost,
+    TotalPrice = UnitPrice * Quantity,
+    TotalCost = UnitCost * Quantity,
+    TotalProfit = TotalPrice - TotalCost
+  ) |>
+  group_by(ProductName) |>
+  summarise(
+    Profit = sum(TotalProfit),
+    Cost = sum(TotalCost),
+    Price = sum(TotalPrice)
+  ) -> prod_discrete
+
+shared_df <- SharedData$new(prod_discrete)
+
+ggplot(shared_df, aes(x = ProductName)) +
+  geom_bar()
+
+dets <- read_csv("https://retail-data-api.onrender.com/details")
+shared_dets <- SharedData$new(dets)
+
+test <- read_csv("https://retail-data-api.onrender.com/CatTest")
+
+read_csv("https://retail-data-api.onrender.com/products")
+read_csv("https://retail-data-api.onrender.com/categories")
+read_csv("https://retail-data-api.onrender.com/customers")
+read_csv("https://retail-data-api.onrender.com/orders")

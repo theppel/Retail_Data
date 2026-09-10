@@ -16,9 +16,46 @@ library(tidyverse)
 library(ggplot2)
 library(plotly)
 library(crosstalk)
+library(ggchicklet)
+library(htmlwidgets)
 
 prod <- read_csv("https://retail-data-api.onrender.com/products")
-shared_df <- SharedData$new(prod)
+
+colnames(prod)[c(5:8)] <- c("OrderDate", "OrderTime", "CategoryName", "ProductName")
+
+prod |>
+  mutate(
+    UnitProfit = UnitPrice - UnitCost,
+    TotalPrice = UnitPrice * Quantity,
+    TotalCost = UnitCost * Quantity,
+    TotalProfit = TotalPrice - TotalCost
+  ) |>
+  group_by(ProductName) |>
+  summarise(
+    Profit = sum(TotalProfit),
+    Cost = sum(TotalCost),
+    Price = sum(TotalPrice)
+  ) -> prod_discrete
+
+shared_df <- SharedData$new(prod_discrete, key = ~ProductName, group = "barGroup")
+
+RD_theme_c <- function() {
+  theme(text = element_text(family = "Manrope"),
+        panel.background = element_rect(fill = "#1A1D22", colour = NA),
+        plot.background = element_rect(fill = "#1A1D22", colour = NA),
+        axis.text.x = element_text(angle = -45, color = "#9CA0A8", hjust = 0, margin = margin(t = 0, r = 0, b = 0, l = 0, unit = "pt")),
+        axis.text.y = element_text(color = "#9CA0A8"),
+        axis.title.y = element_text(color = "#9CA0A8", family = "Garamond", size = 16),
+        axis.title.x = element_text(color = "#9CA0A8", family = "Garamond", size = 16),
+        title = element_text(color = "#EDEDED", family = "Baskerville Old Face", size = 20, face = "bold"),
+        panel.grid.major.x = element_line(colour = NA),
+        panel.grid.minor.y = element_line(colour = "#2A2D33", linewidth = 0.5),
+        panel.grid.major.y = element_line(colour = "#2A2D33", linewidth = 0.1)
+  )
+}
+
+categorical_colours <- c("#2DD4BF", "#FBBF24", "#F0A8C4", "#7FC7F2", "#F4A261", 
+                         "#6C7BC2", "#8FBC94", "#E76F51", "#B79CF0", "#9CA0A8")
 ```
 
 ``` {r}
@@ -33,4 +70,88 @@ filter_select(
   group = ~ProductName,
   allLevels = FALSE
 )
+```
+
+``` {r}
+#| echo: false
+#| warning: false
+#| label: plot
+
+p <- ggplot(shared_df, aes(x = ProductName, y = Profit, fill = ProductName)) +
+  geom_col() +
+  theme_minimal() +
+  RD_theme_c() +
+  labs(x = NULL)
+
+gp <- ggplotly(p)
+
+gp <- gp %>% onRender("
+  function(el, x) {
+    var originalData = JSON.parse(JSON.stringify(el.data));
+    var baseLayout = JSON.parse(JSON.stringify(el.layout));
+    var baseConfig = el._context ? JSON.parse(JSON.stringify(el._context)) : {};
+
+    originalData.forEach(function(trace) {
+      trace.x = [trace.name];
+    });
+
+    var fullCategoryOrder = originalData.map(function(trace) { return trace.name; });
+
+    // Your real palette - only needs as many colors as the max
+    // number of groups a user can select at once
+    var palette = [
+      '#2DD4BF', '#FBBF24', '#F0A8C4', '#7FC7F2', '#F4A261', 
+      '#6C7BC2', '#8FBC94', '#E76F51', '#B79CF0', '#9CA0A8'
+    ];
+
+    function updatePlot(keys) {
+      var newData = originalData
+        .filter(function(trace) {
+          return (keys === null || keys.indexOf(trace.name) > -1);
+        })
+        .map(function(trace) { return JSON.parse(JSON.stringify(trace)); });
+
+      // Assign palette colors by position among the *currently selected* traces
+      newData.forEach(function(trace, i) {
+        var color = palette[i % palette.length];
+        trace.marker.color = color;
+        if (trace.marker.line) {
+          trace.marker.line.color = color;
+        }
+      });
+
+      var newCategoryArray = (keys === null)
+        ? fullCategoryOrder
+        : fullCategoryOrder.filter(function(name) { return keys.indexOf(name) > -1; });
+
+      var newLayout = JSON.parse(JSON.stringify(baseLayout));
+
+      delete newLayout.xaxis.tickvals;
+      delete newLayout.xaxis.ticktext;
+      delete newLayout.xaxis.range;
+
+      newLayout.xaxis.type = 'category';
+      newLayout.xaxis.categoryorder = 'array';
+      newLayout.xaxis.categoryarray = newCategoryArray;
+      newLayout.xaxis.autorange = true;
+
+      delete newLayout.yaxis.range;
+      newLayout.yaxis.autorange = true;
+
+      newLayout.showlegend = false;
+
+      Plotly.purge(el.id);
+      Plotly.newPlot(el.id, newData, newLayout, baseConfig);
+    }
+
+    var filterVar = crosstalk.group('barGroup').var('filter');
+    filterVar.on('change', function(e) {
+      updatePlot(e.value);
+    });
+
+    updatePlot([]);
+  }
+")
+
+gp
 ```
