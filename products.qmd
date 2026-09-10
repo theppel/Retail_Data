@@ -1,5 +1,36 @@
 ---
 title: "Products"
+format:
+  html:
+    include-after-body: product-js.html
 ---
 
-Products go here
+trying to change the data
+
+``` {r}
+#| echo: false
+#| warning: false
+#| label: startup
+
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(crosstalk)
+
+prod <- read_csv("https://retail-data-api.onrender.com/products")
+shared_df <- SharedData$new(prod)
+```
+
+``` {r}
+#| echo: false
+#| warning: false
+#| label: menu
+
+filter_select(
+  id = "product",
+  label = "Select up to 10 products:",
+  sharedData = shared_df,
+  group = ~ProductName,
+  allLevels = FALSE
+)
+```

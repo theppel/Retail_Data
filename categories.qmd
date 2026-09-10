@@ -6,12 +6,14 @@ title: "Categories"
 #| echo: false
 #| include: false
 #| label: operations
+#| standalone: true
 
 # loading libraries
 library(tidyverse)
 library(ggplot2)
 library(extrafont)
 library(ggchicklet)
+library(shinylive)
 
 categorical_colours <- c("#2DD4BF", "#FBBF24", "#F0A8C4", "#7FC7F2", "#F4A261", 
                          "#6C7BC2", "#8FBC94", "#E76F51", "#B79CF0", "#9CA0A8")
@@ -77,3 +79,4 @@ cats |>
   RD_theme_c() +
   labs(x = NULL, y = "Profit", title = "Profit by Category")
 ```
+

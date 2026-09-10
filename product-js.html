@@ -1,0 +1,11 @@
+<script>
+setTimeout(setOptions, 1000);
+
+function setOptions() {
+  const s = document.querySelector("#product select").selectize;
+
+  s.settings.maxItems = 10;
+  s.removeOption("");
+  s.refreshOptions(false);
+}
+</script>

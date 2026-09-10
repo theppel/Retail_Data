@@ -10,6 +10,8 @@ library(RColorBrewer)
 library(bslib)
 library(extrafont)
 library(ggchicklet)
+library(crosstalk)
+library(plotly)
 
 font_import()
 loadfonts()

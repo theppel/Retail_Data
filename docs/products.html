@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -38,10 +41,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-de27b4eb206f3b76191c45a687ea963a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b3ef42bdc7d74e6e93c7b95da9e3eaf5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,6 +72,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="site_libs/selectize-0.12.4/css/selectize.bootstrap3.css" rel="stylesheet">
+
+<script src="site_libs/selectize-0.12.4/js/selectize.min.js"></script>
+
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
 
 
 </head>
@@ -185,11 +198,151 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Products go here</p>
+<p>trying to change the data</p>
+<div class="cell">
+<div class="cell-output-display no-overflow-x">
+<div id="product" class="form-group crosstalk-input-select crosstalk-input">
+<label class="control-label" for="product">Select up to 10 products:</label>
+<div>
+<select multiple=""></select>
+<script type="application/json" data-for="product">{
+  "items": {
+    "value": ["ABC's Baby Spinach", "ABC's Beef Ribeye", "ABC's Blueberries", "ABC's Ground Beef", "ABC's Lamb Chops", "ABC's Organic Carrots", "ABC's Organic Eggs", "ABC's Parmesan", "ABC's Red Apples", "ABC's Salted Butter", "ABC's Tuna Steak", "ABC's Whole Milk", "DEF's All-Purpose Cleaner", "DEF's Bleach Gel", "DEF's Body Wash", "DEF's Disinfectant Spray", "DEF's Facial Cleanser", "DEF's Laundry Detergent", "DEF's Mint Toothpaste", "DEF's Shaving Cream", "DEF's Sunscreen SPF 50", "DEF's Toilet Cleaner", "GHI's Chicken Nuggets", "GHI's Fish Sticks", "GHI's French Fries", "GHI's Frozen Peas", "GHI's Veggie Burgers", "JKL's Frozen Berries", "JKL's Frozen Waffles", "JKL's Ice Cream Vanilla", "JKL's Pepperoni Pizza", "JKL's Puff Pastry", "KLM's Cheddar Cheese", "KLM's Duck Breast", "KLM's Hass Avocados", "KLM's Heavy Cream", "KLM's Lemons", "KLM's Smoked Bacon", "KLM's Sour Cream", "KLM's Turkey Breast", "KLM's Yellow Onions", "PQR's All-Purpose Flour", "PQR's Black Pepper", "PQR's Cinnamon Rolls", "PQR's Coconut Milk", "PQR's Extra Virgin Olive Oil", "PQR's Ginger Ale", "PQR's Granola Bar", "PQR's Iced Tea", "PQR's Lemonade", "PQR's Milk Chocolate", "PQR's Orange Juice", "PQR's Plain Bagels", "PQR's Potato Chips", "PQR's Protein Bar", "PQR's Sourdough Bread", "PQR's Tortilla Wraps", "STU's Basmati Rice", "STU's Brioche Buns", "STU's Cold Brew", "STU's Garlic Bread", "STU's Granulated Sugar", "STU's Green Tea", "STU's Gummy Bears", "STU's Red Lentils", "STU's Rice Cakes", "STU's Tonic Water", "STU's Tortilla Chips", "STU's Whole Wheat Loaf", "VWX's Apple Cider", "VWX's Butter Croissant", "VWX's Energy Drink", "VWX's Penne Pasta", "VWX's Pita Bread", "VWX's Popcorn", "VWX's Roasted Almonds", "VWX's Rye Bread", "VWX's Salted Pretzels", "VWX's Sea Salt", "VWX's Sparkling Water", "VWX's Tomato Paste", "XYZ's Atlantic Salmon", "XYZ's Beef Sausage", "XYZ's Broccoli Crowns", "XYZ's Cherry Tomatoes", "XYZ's Chicken Breast", "XYZ's Cottage Cheese", "XYZ's Fresh Bananas", "XYZ's Mozzarella", "XYZ's Yogurt", "YZA's Daily Shampoo", "YZA's Degreaser Spray", "YZA's Deodorant Roll-On", "YZA's Dish Soap", "YZA's Dishwasher Pods", "YZA's Fabric Softener", "YZA's Glass Cleaner", "YZA's Hair Conditioner", "YZA's Liquid Hand Soap", "YZA's Moisturizing Lotion"],
+    "label": ["ABC's Baby Spinach", "ABC's Beef Ribeye", "ABC's Blueberries", "ABC's Ground Beef", "ABC's Lamb Chops", "ABC's Organic Carrots", "ABC's Organic Eggs", "ABC's Parmesan", "ABC's Red Apples", "ABC's Salted Butter", "ABC's Tuna Steak", "ABC's Whole Milk", "DEF's All-Purpose Cleaner", "DEF's Bleach Gel", "DEF's Body Wash", "DEF's Disinfectant Spray", "DEF's Facial Cleanser", "DEF's Laundry Detergent", "DEF's Mint Toothpaste", "DEF's Shaving Cream", "DEF's Sunscreen SPF 50", "DEF's Toilet Cleaner", "GHI's Chicken Nuggets", "GHI's Fish Sticks", "GHI's French Fries", "GHI's Frozen Peas", "GHI's Veggie Burgers", "JKL's Frozen Berries", "JKL's Frozen Waffles", "JKL's Ice Cream Vanilla", "JKL's Pepperoni Pizza", "JKL's Puff Pastry", "KLM's Cheddar Cheese", "KLM's Duck Breast", "KLM's Hass Avocados", "KLM's Heavy Cream", "KLM's Lemons", "KLM's Smoked Bacon", "KLM's Sour Cream", "KLM's Turkey Breast", "KLM's Yellow Onions", "PQR's All-Purpose Flour", "PQR's Black Pepper", "PQR's Cinnamon Rolls", "PQR's Coconut Milk", "PQR's Extra Virgin Olive Oil", "PQR's Ginger Ale", "PQR's Granola Bar", "PQR's Iced Tea", "PQR's Lemonade", "PQR's Milk Chocolate", "PQR's Orange Juice", "PQR's Plain Bagels", "PQR's Potato Chips", "PQR's Protein Bar", "PQR's Sourdough Bread", "PQR's Tortilla Wraps", "STU's Basmati Rice", "STU's Brioche Buns", "STU's Cold Brew", "STU's Garlic Bread", "STU's Granulated Sugar", "STU's Green Tea", "STU's Gummy Bears", "STU's Red Lentils", "STU's Rice Cakes", "STU's Tonic Water", "STU's Tortilla Chips", "STU's Whole Wheat Loaf", "VWX's Apple Cider", "VWX's Butter Croissant", "VWX's Energy Drink", "VWX's Penne Pasta", "VWX's Pita Bread", "VWX's Popcorn", "VWX's Roasted Almonds", "VWX's Rye Bread", "VWX's Salted Pretzels", "VWX's Sea Salt", "VWX's Sparkling Water", "VWX's Tomato Paste", "XYZ's Atlantic Salmon", "XYZ's Beef Sausage", "XYZ's Broccoli Crowns", "XYZ's Cherry Tomatoes", "XYZ's Chicken Breast", "XYZ's Cottage Cheese", "XYZ's Fresh Bananas", "XYZ's Mozzarella", "XYZ's Yogurt", "YZA's Daily Shampoo", "YZA's Degreaser Spray", "YZA's Deodorant Roll-On", "YZA's Dish Soap", "YZA's Dishwasher Pods", "YZA's Fabric Softener", "YZA's Glass Cleaner", "YZA's Hair Conditioner", "YZA's Liquid Hand Soap", "YZA's Moisturizing Lotion"]
+  },
+  "map": {
+    "ABC's Baby Spinach": ["24"],
+    "ABC's Beef Ribeye": ["1"],
+    "ABC's Blueberries": ["30"],
+    "ABC's Ground Beef": ["7"],
+    "ABC's Lamb Chops": ["4"],
+    "ABC's Organic Carrots": ["27"],
+    "ABC's Organic Eggs": ["17"],
+    "ABC's Parmesan": ["20"],
+    "ABC's Red Apples": ["21"],
+    "ABC's Salted Butter": ["14"],
+    "ABC's Tuna Steak": ["10"],
+    "ABC's Whole Milk": ["11"],
+    "DEF's All-Purpose Cleaner": ["84"],
+    "DEF's Bleach Gel": ["88"],
+    "DEF's Body Wash": ["72"],
+    "DEF's Disinfectant Spray": ["86"],
+    "DEF's Facial Cleanser": ["78"],
+    "DEF's Laundry Detergent": ["82"],
+    "DEF's Mint Toothpaste": ["74"],
+    "DEF's Shaving Cream": ["76"],
+    "DEF's Sunscreen SPF 50": ["80"],
+    "DEF's Toilet Cleaner": ["90"],
+    "GHI's Chicken Nuggets": ["97"],
+    "GHI's Fish Sticks": ["95"],
+    "GHI's French Fries": ["91"],
+    "GHI's Frozen Peas": ["93"],
+    "GHI's Veggie Burgers": ["99"],
+    "JKL's Frozen Berries": ["96"],
+    "JKL's Frozen Waffles": ["98"],
+    "JKL's Ice Cream Vanilla": ["94"],
+    "JKL's Pepperoni Pizza": ["92"],
+    "JKL's Puff Pastry": ["100"],
+    "KLM's Cheddar Cheese": ["13"],
+    "KLM's Duck Breast": ["9"],
+    "KLM's Hass Avocados": ["23"],
+    "KLM's Heavy Cream": ["16"],
+    "KLM's Lemons": ["29"],
+    "KLM's Smoked Bacon": ["6"],
+    "KLM's Sour Cream": ["19"],
+    "KLM's Turkey Breast": ["3"],
+    "KLM's Yellow Onions": ["26"],
+    "PQR's All-Purpose Flour": ["64"],
+    "PQR's Black Pepper": ["67"],
+    "PQR's Cinnamon Rolls": ["47"],
+    "PQR's Coconut Milk": ["70"],
+    "PQR's Extra Virgin Olive Oil": ["61"],
+    "PQR's Ginger Ale": ["37"],
+    "PQR's Granola Bar": ["60"],
+    "PQR's Iced Tea": ["40"],
+    "PQR's Lemonade": ["31"],
+    "PQR's Milk Chocolate": ["54"],
+    "PQR's Orange Juice": ["34"],
+    "PQR's Plain Bagels": ["44"],
+    "PQR's Potato Chips": ["51"],
+    "PQR's Protein Bar": ["57"],
+    "PQR's Sourdough Bread": ["41"],
+    "PQR's Tortilla Wraps": ["50"],
+    "STU's Basmati Rice": ["62"],
+    "STU's Brioche Buns": ["45"],
+    "STU's Cold Brew": ["32"],
+    "STU's Garlic Bread": ["48"],
+    "STU's Granulated Sugar": ["65"],
+    "STU's Green Tea": ["35"],
+    "STU's Gummy Bears": ["55"],
+    "STU's Red Lentils": ["68"],
+    "STU's Rice Cakes": ["58"],
+    "STU's Tonic Water": ["38"],
+    "STU's Tortilla Chips": ["52"],
+    "STU's Whole Wheat Loaf": ["42"],
+    "VWX's Apple Cider": ["39"],
+    "VWX's Butter Croissant": ["43"],
+    "VWX's Energy Drink": ["36"],
+    "VWX's Penne Pasta": ["63"],
+    "VWX's Pita Bread": ["46"],
+    "VWX's Popcorn": ["59"],
+    "VWX's Roasted Almonds": ["53"],
+    "VWX's Rye Bread": ["49"],
+    "VWX's Salted Pretzels": ["56"],
+    "VWX's Sea Salt": ["66"],
+    "VWX's Sparkling Water": ["33"],
+    "VWX's Tomato Paste": ["69"],
+    "XYZ's Atlantic Salmon": ["5"],
+    "XYZ's Beef Sausage": ["8"],
+    "XYZ's Broccoli Crowns": ["28"],
+    "XYZ's Cherry Tomatoes": ["25"],
+    "XYZ's Chicken Breast": ["2"],
+    "XYZ's Cottage Cheese": ["15"],
+    "XYZ's Fresh Bananas": ["22"],
+    "XYZ's Mozzarella": ["18"],
+    "XYZ's Yogurt": ["12"],
+    "YZA's Daily Shampoo": ["73"],
+    "YZA's Degreaser Spray": ["89"],
+    "YZA's Deodorant Roll-On": ["77"],
+    "YZA's Dish Soap": ["81"],
+    "YZA's Dishwasher Pods": ["87"],
+    "YZA's Fabric Softener": ["83"],
+    "YZA's Glass Cleaner": ["85"],
+    "YZA's Hair Conditioner": ["79"],
+    "YZA's Liquid Hand Soap": ["71"],
+    "YZA's Moisturizing Lotion": ["75"]
+  },
+  "group": ["SharedDatacb2ed678"]
+}</script>
+</div>
+</div>
+</div>
+</div>
 
 
 
 </main> <!-- /main -->
+<script>
+
+setTimeout(setOptions, 1000);
+
+
+
+function setOptions() {
+
+  const s = document.querySelector("#product select").selectize;
+
+
+
+  s.settings.maxItems = 10;
+
+  s.removeOption("");
+
+  s.refreshOptions(false);
+
+}
+
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

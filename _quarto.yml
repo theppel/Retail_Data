@@ -38,6 +38,3 @@ format:
       - styles.scss
     toc: true
     page-layout: full
-    
-filters:
-  - shinylive

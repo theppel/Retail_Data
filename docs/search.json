@@ -4,7 +4,7 @@
     "href": "products.html",
     "title": "Products",
     "section": "",
-    "text": "Products go here",
+    "text": "trying to change the data\n\n\n\nSelect up to 10 products:",
     "crumbs": [
       "About",
       "<span class='sidebar-icon' style='--icon: url(/icons/products.svg)'></span>Products"
@@ -25,7 +25,7 @@
     "text": "Customers go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/customers.svg)'></span>Customers"
+      "<span class='sidebar-icon' style='--icon: url(/icons/customers.svg)'></span>Customers"
     ]
   },
   {
@@ -36,17 +36,6 @@
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "categories.html",
-    "href": "categories.html",
-    "title": "Categories",
-    "section": "",
-    "text": "Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use \"none\" instead as\nof ggplot2 3.3.4.",
-    "crumbs": [
-      "About",
-      "<span class='sidebar-icon' style='--icon: url(/icons/categories.svg)'></span>Categories"
-    ]
-  },
-  {
     "objectID": "details.html",
     "href": "details.html",
     "title": "Details",
@@ -54,7 +43,7 @@
     "text": "Details go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/order_details.svg)'></span>Order Details"
+      "<span class='sidebar-icon' style='--icon: url(/icons/order_details.svg)'></span>Order Details"
     ]
   },
   {
@@ -65,7 +54,7 @@
     "text": "Orders go here",
     "crumbs": [
       "About",
-      "<span class='sidebar-icon' style='--icon: url(/Retail_Data/icons/orders.svg)'></span>Orders"
+      "<span class='sidebar-icon' style='--icon: url(/icons/orders.svg)'></span>Orders"
     ]
   }
 ]
