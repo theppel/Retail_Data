@@ -5,8 +5,6 @@ format:
     include-after-body: product-js.html
 ---
 
-trying to change the data
-
 ``` {r}
 #| echo: false
 #| warning: false
@@ -39,6 +37,11 @@ prod |>
 
 shared_df <- SharedData$new(prod_discrete, key = ~ProductName, group = "barGroup")
 
+prod_long <- prod_discrete |>
+  pivot_longer(cols = c(Cost, Price), names_to = "Type", values_to = "Value")
+
+shared_long <- SharedData$new(prod_long, key ~ProductName, group = "barGroup")
+
 RD_theme_c <- function() {
   theme(text = element_text(family = "Manrope"),
         panel.background = element_rect(fill = "#1A1D22", colour = NA),
@@ -58,19 +61,7 @@ categorical_colours <- c("#2DD4BF", "#FBBF24", "#F0A8C4", "#7FC7F2", "#F4A261",
                          "#6C7BC2", "#8FBC94", "#E76F51", "#B79CF0", "#9CA0A8")
 ```
 
-``` {r}
-#| echo: false
-#| warning: false
-#| label: menu
-
-filter_select(
-  id = "product",
-  label = "Select up to 10 products:",
-  sharedData = shared_df,
-  group = ~ProductName,
-  allLevels = FALSE
-)
-```
+## Profit by Product
 
 ``` {r}
 #| echo: false
@@ -134,6 +125,15 @@ gp <- gp %>% onRender("
       newLayout.xaxis.categoryorder = 'array';
       newLayout.xaxis.categoryarray = newCategoryArray;
       newLayout.xaxis.autorange = true;
+      
+      delete newLayout.yaxis.range;
+      delete newLayout.yaxis.tickvals;
+      delete newLayout.yaxis.ticktext;
+      delete newLayout.yaxis.dtick;
+      delete newLayout.yaxis.tick0;
+      delete newLayout.yaxis.nticks;
+      newLayout.yaxis.autorange = true;
+      newLayout.yaxis.tickmode = 'auto';
 
       delete newLayout.yaxis.range;
       newLayout.yaxis.autorange = true;
@@ -154,4 +154,114 @@ gp <- gp %>% onRender("
 ")
 
 gp
+```
+
+``` {r}
+#| echo: false
+#| warning: false
+#| label: menu
+
+filter_select(
+  id = "product",
+  label = "Select up to 10 products:",
+  sharedData = shared_df,
+  group = ~ProductName,
+  allLevels = FALSE
+)
+```
+
+``` {r}
+#| echo: false
+#| warning: false
+#| label: plot-pc
+
+pc <- ggplot(shared_long, aes(x = ProductName, y = Value, fill = Type)) +
+  geom_col(position = "dodge") +
+  theme_minimal() +
+  RD_theme_c() +
+  labs(x = NULL) +
+  scale_fill_manual(values = categorical_colours[c(1, 2)])
+
+gpc <- ggplotly(pc)
+
+gpc <- gpc %>% onRender("
+  function(el, x) {
+  var originalData = JSON.parse(JSON.stringify(el.data));
+  var baseLayout = JSON.parse(JSON.stringify(el.layout));
+  var baseConfig = el._context ? JSON.parse(JSON.stringify(el._context)) : {};
+
+  // Full product order, taken from the x-values already present in the traces
+  var fullCategoryOrder = originalData.length ? originalData[0].x.slice() : [];
+
+  function updatePlot(keys) {
+    var selected = (keys === null || keys.length === 0) ? null : keys;
+
+    var newCategoryArray = selected === null
+      ? fullCategoryOrder
+      : fullCategoryOrder.filter(function(name) { return selected.indexOf(name) > -1; });
+
+    var newData = originalData.map(function(trace) {
+      var t = JSON.parse(JSON.stringify(trace));
+      if (selected === null) return t;
+
+      var keepIdx = [];
+      trace.x.forEach(function(val, i) {
+        if (selected.indexOf(val) > -1) keepIdx.push(i);
+      });
+
+      t.x = keepIdx.map(function(i) { return trace.x[i]; });
+      t.y = keepIdx.map(function(i) { return trace.y[i]; });
+      if (trace.text) t.text = keepIdx.map(function(i) { return trace.text[i]; });
+      // if you add tooltips/markers with per-point arrays later, filter them the same way
+
+      return t;
+    });
+
+    var newLayout = JSON.parse(JSON.stringify(baseLayout));
+
+    delete newLayout.xaxis.tickvals;
+    delete newLayout.xaxis.ticktext;
+    delete newLayout.xaxis.range;
+    newLayout.xaxis.type = 'category';
+    newLayout.xaxis.categoryorder = 'array';
+    newLayout.xaxis.categoryarray = newCategoryArray;
+    newLayout.xaxis.autorange = true;
+
+    delete newLayout.yaxis.range;
+    delete newLayout.yaxis.tickvals;
+    delete newLayout.yaxis.ticktext;
+    delete newLayout.yaxis.dtick;
+    delete newLayout.yaxis.tick0;
+    delete newLayout.yaxis.nticks;
+    newLayout.yaxis.autorange = true;
+    newLayout.yaxis.tickmode = 'auto';
+
+    newLayout.showlegend = true;
+
+    Plotly.purge(el.id);
+    Plotly.newPlot(el.id, newData, newLayout, baseConfig);
+  }
+
+  var filterVar = crosstalk.group('barGroup').var('filter');
+  filterVar.on('change', function(e) { updatePlot(e.value); });
+
+  updatePlot(null);   // show everything on initial load
+}
+")
+
+gpc
+```
+
+``` {r}
+#| echo: false
+#| warning: false
+#| label: menu-pc
+
+filter_select(
+  id = "product-pc",
+  label = "Select up to 10 products:",
+  sharedData = shared_long,
+  group = ~ProductName,
+  allLevels = FALSE
+)
 ```

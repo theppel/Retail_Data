@@ -102,6 +102,8 @@ h1 {
 
 h2 {
   font-size: 19px;
+  color: $font-col-secondary;
+  border-bottom: none !important;
 }
 
 h3 {
@@ -341,12 +343,79 @@ p {
   }
 }
 
-/* Plots */
+/* Drop downs */
 
+.crosstalk-input-select .selectize-input {
+  background-color: $bg-mid;
+  color: $font-col-secondary;
+  border-color: $border-col;
+  font-size: $font-s;
+  font-family: $font-tertiary !important;
+}
 
+.selectize-dropdown {
+  background-color: $bg-mid;
+  color: $font-col-secondary;
+  font-size: $font-s;
+  font-family: $font-tertiary !important;
+}
+
+.selectize-dropdown .option {
+  background-color: $bg-mid;
+  color: $font-col-secondary;
+  font-size: $font-s;
+  font-family: $font-tertiary !important;
+}
+
+.selectize-dropdown .option.active {
+  background-color: $bg-front;
+  color: $font-col-primary;
+  font-size: $font-s;
+  font-family: $font-tertiary !important;
+}
+
+.item {
+  background-color: $bg-front !important;
+  color: $font-col-primary !important;
+  font-size: $font-s !important;
+  font-family: $font-tertiary !important;
+}
+
+.selectize-input input,
+.selectize-input > div.item,
+.selectize-dropdown .option {
+  font-family: $font-tertiary;
+}
+
+.selectize-dropdown-content,
+.selectize-dropdown *
+.selectize-input *,
+.selectize-input input,
+.selectize-input select,
+.selectize-input select *{
+  font-family: $font-tertiary !important;
+  font-size: $font-s !important;
+}
+
+.item {
+  font-family: $font-tertiary !important;
+  font-size: $font-s !important;
+}
+
+.selectize-control multi * {
+  font-family: $font-tertiary !important;
+  font-size: $font-s !important;
+}
 /* Hiding sidebar */
 
 #quarto-margin-sidebar {
   display: none !important;
 }
 
+.anchorjs-link {
+  display: none !important;
+}
+
+.control-label {
+  color: $font-col-secondary;
+}

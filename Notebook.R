@@ -390,3 +390,9 @@ read_csv("https://retail-data-api.onrender.com/products")
 read_csv("https://retail-data-api.onrender.com/categories")
 read_csv("https://retail-data-api.onrender.com/customers")
 read_csv("https://retail-data-api.onrender.com/orders")
+
+prod_discrete |>
+  pivot_longer(cols = c(Cost, Price), names_to = "Type", values_to = "Value") |>
+  ggplot(aes(x = ProductName, y = Value, fill = Type)) +
+  geom_col(position = "dodge") +
+  theme_minimal()

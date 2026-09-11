@@ -4,7 +4,7 @@
     "href": "products.html",
     "title": "Products",
     "section": "",
-    "text": "trying to change the data\n\n\n\nSelect up to 10 products:",
+    "text": "Select up to 10 products:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelect up to 10 products:",
     "crumbs": [
       "About",
       "<span class='sidebar-icon' style='--icon: url(/icons/products.svg)'></span>Products"
@@ -55,6 +55,17 @@
     "crumbs": [
       "About",
       "<span class='sidebar-icon' style='--icon: url(/icons/orders.svg)'></span>Orders"
+    ]
+  },
+  {
+    "objectID": "products.html#profit-by-product",
+    "href": "products.html#profit-by-product",
+    "title": "Products",
+    "section": "",
+    "text": "Select up to 10 products:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelect up to 10 products:",
+    "crumbs": [
+      "About",
+      "<span class='sidebar-icon' style='--icon: url(/icons/products.svg)'></span>Products"
     ]
   }
 ]

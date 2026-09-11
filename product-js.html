@@ -3,9 +3,13 @@ setTimeout(setOptions, 1000);
 
 function setOptions() {
   const s = document.querySelector("#product select").selectize;
-
+  const t = document.querySelector("#product-pc select").selectize;
+  
   s.settings.maxItems = 10;
+  t.settings.maxItems = 10;
   s.removeOption("");
+  t.removeOption("");
   s.refreshOptions(false);
+  t.refreshOptions(false);
 }
 </script>
